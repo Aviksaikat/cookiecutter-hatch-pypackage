@@ -2,6 +2,6 @@
 
 set -e
 
-pip install pdm
+pip install hatch
 
-pdm install
+hatch env create
