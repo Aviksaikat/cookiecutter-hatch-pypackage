@@ -5,7 +5,7 @@ Cookiecutter template for a cutting-edge Python package: Hatch, ruff, mypy, GitH
 ## Features
 
 * [X] Lightweight starter
-* [X] [`Hatch`](https://pdm-project.org/latest/) package management
+* [X] [`Hatch`](https://hatch.pypa.io/latest/install/) package management
 * [X] Linting and formatting with [`ruff`](https://github.com/charliermarsh/ruff)
 * [X] Type checking with [`mypy`](https://github.com/python/mypy)
 * [X] Check unused, missing and transitive dependencies with [`deptry`](https://deptry.com/)
