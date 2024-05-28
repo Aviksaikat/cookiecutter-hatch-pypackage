@@ -1,6 +1,5 @@
 import pytest
-
-from {{ cookiecutter.package_name }} import add
+from {{cookiecutter.package_name}} import add
 
 
 @pytest.mark.parametrize(
