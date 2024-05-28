@@ -75,8 +75,8 @@ This often provides additional considerations and avoids unnecessary work.
 3. Clone this copy to your local disk:
 
    ```console
-   git clone git@github.com:YourLogin/{{ cookiecutter.project_slug }}.git
-   cd {{ cookiecutter.project_slug }}
+   git clone git@github.com:YourLogin/{{ cookiecutter.dist_name }}.git
+   cd {{ cookiecutter.dist_name }}
    ```
 
 4. Make sure [hatch] is installed using [pipx]:
