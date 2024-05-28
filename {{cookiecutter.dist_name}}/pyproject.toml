@@ -228,6 +228,7 @@ lint-check = [
 [tool.hatch.envs.docs]
 dependencies = [
 {% if cookiecutter.mkdocs == "Y" -%}
+
   "mkdocs",
   "mkdocs-material",
   "mkdocstrings[python]",
@@ -252,9 +253,11 @@ build-check = [
 dependencies = [
   "pytest",
 {% if cookiecutter.codecov == "Y" -%}
+
   "pytest-cov",
 {% endif -%}
 {% if cookiecutter.asyncio == "Y" -%}
+
   "pytest-asyncio",
   {%- endif %}
 ]
