@@ -1,22 +1,10 @@
 """{{cookiecutter.project_short_description}}"""
+from importlib.metadata import PackageNotFoundError, version
 
-__version__ = "0.0.0"
+try:
+    __version__ = version('{{ cookiecutter.dist_name }}')
+except PackageNotFoundError:  # pragma: no cover
+    __version__ = 'unknown'
+finally:
+    del version, PackageNotFoundError
 
-
-def add(a: int, b: int) -> int:
-    """
-    Add two integers.
-
-    Args:
-        a:
-            The first operand.
-        b:
-            The second operand.
-
-    Examples:
-        Add two integers
-
-            r = add(2, 3)
-            print(r)  # 5
-    """
-    return a + b

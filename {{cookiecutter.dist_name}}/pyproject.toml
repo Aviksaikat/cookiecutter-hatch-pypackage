@@ -26,12 +26,23 @@ Source = "{{ cookiecutter.repository_url }}"
 [tool.hatch.metadata]
 allow-direct-references = true
 
-[tool.hatch.version]
-source = "regex_commit"
-commit_extra_args = ["-e"]
-# Change this if the version is in a different place
-path = "{{ cookiecutter.package_name }}/__init__.py"
 
+##############
+# Versioning #
+##############
+
+[tool.hatch.version]
+source = "vcs"
+raw-options = { version_scheme = "no-guess-dev" }
+
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/{{ cookiecutter.package_name }}/_version.py"
+
+
+##################
+# External Tools #
+##################
 
 [tool.mypy]
 files = ["{{cookiecutter.package_name}}"]
@@ -51,8 +62,19 @@ show_error_codes = "True"
 [tool.ruff]
 target-version = "py{{ cookiecutter.python_version | replace(".", "") }}"
 line-length = 120
+indent-width = 4
+include = [
+    "src/**/*.py",
+    "src/**/*.pyi",
+    "tests/**/*.py",
+    "tests/**/*.pyi"
+]
+
 [tool.ruff.lint]
-extend-select = ["I"]
+preview = true # preview features & checks, use with caution
+extend-select = [ # features in preview
+    "W292", # missing-newline-at-end-of-file
+]
 select = [
     "A",
     "ARG",
@@ -62,9 +84,10 @@ select = [
     "E",
     "EM",
     "F",
-    "FBT",
+    "FBT", # Boolean trap
     "ICN",
     "ISC",
+    "I",
     "N",
     "PLC",
     "PLE",
@@ -78,6 +101,7 @@ select = [
     "UP",
     "W",
     "YTT",
+    "RUF100", # Automatically remove unused # noqa directives
 ]
 ignore = [
     # Allow non-abstract empty methods in abstract base classes
@@ -85,78 +109,178 @@ ignore = [
     # Allow boolean positional values in function calls, like `dict.get(... True)`
     "FBT003",
     # Ignore checks for possible passwords
-    "S105",
-    "S106",
-    "S107",
+    "S105", "S106", "S107",
     # Ignore complexity
-    "C901",
-    "PLR0911",
-    "PLR0912",
-    "PLR0913",
-    "PLR0915",
+    "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
+    "PLC1901", # empty string comparisons
+    "PLW2901", # `for` loop variable overwritten
+    "SIM114", # Combine `if` branches using logical `or` operator
+    "E203", # Whitespace before :, needed for black compatability and also `ruff format`
+    "ISC001", # causes unexpected behaviour with formatter
 ]
+
+
+[tool.ruff.format]
+quote-style = "single" # be more like black
+
+
+[tool.ruff.lint.isort]
+known-first-party = ["{{ cookiecutter.package_name }}"]
+
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+
+[tool.ruff.lint.per-file-ignores]
+# Allow print/pprint
+"examples/*" = ["T201"]
+# Tests can use magic values, assertions, and relative imports
+"tests/**/*" = ["PLR2004", "S101", "TID252"]
+
 
 [tool.pytest.ini_options]
 addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
 {% if cookiecutter.asyncio == "Y" -%}
-  asyncio_mode = "strict"
+asyncio_mode = "strict"
+{%- endif %}
+
+[tool.coverage.run]
+branch = true
+source = ["src/{{ cookiecutter.pkg_name }}"]
+omit = [
+    "_version.py",  # automatically created by hatch-vcs, not in repo
+]
+
+[tool.coverage.paths]
+source = [
+    "src/",
+    "*/site-packages/",
+]
+
+
+#####################
+# Environment Setup #
+#####################
+
+{%- if cookiecutter.lock_file_support %}
+[tool.hatch.env]
+requires = ["hatch-pip-compile~=1.11"]
 {%- endif %}
 
 
+# Default env dendencies
 [tool.hatch.envs.default]
 dependencies = [
-  "pytest",
-  {% if cookiecutter.codecov == "Y" -%}
-    "pytest-cov"
-  {% endif -%}
-  {% if cookiecutter.asyncio == "Y" -%}
-    "pytest-asyncio",
-    {%- endif %}
-  {% if cookiecutter.deptry == "Y" -%}
-    "deptry",
-  {% endif -%}
-    "mypy",
-    "ruff",
-    "pre-commit",
-    "tox"
-  {% if cookiecutter.mkdocs == "Y" -%}
-    "mkdocs",
-    "mkdocs-material",
-    "mkdocstrings[python]"
+  {% if cookiecutter.pydantic == "Y" -%}
+  "pydantic",
+  "pre-commit",
   {%- endif %}
 ]
-
+post-install-commands = ["pre-commit install"]
+{%- if cookiecutter.lock_file_support %}
+type = "pip-compile"
+pip-compile-constraint = "default"  # keep locks between default & others consistent
+lock-filename = "locks/{env_name}.lock"
+pip-compile-hashes = true
+{%- endif %}
+{%- if cookiecutter.lock_file_support %}
 [tool.hatch.envs.default.scripts]
-test = "pytest"
-test-cov-xml = "pytest --cov-report=xml"
+upgrade-all = "PIP_COMPILE_UPGRADE=1 hatch env run --env {env_name} -- python --version"
+upgrade-pkg = "PIP_COMPILE_UPGRADE='{args}' hatch env run --env {env_name} -- python --version"
+{%- endif %}
+
+
+# Lint env dendencies
+[tool.hatch.envs.lint]
+dependencies = [
+  "mypy",
+  "ruff",
+{% if cookiecutter.deptry == "Y" -%}
+  "deptry",
+{% endif -%}
+]
+
+
+[tool.hatch.envs.lint.scripts]
+typing = [
+    "echo \"VERSION: `mypy --version`\"",
+    "mypy --install-types --non-interactive {args}"
+]
 lint = [
+  "echo \"VERSION: `ruff --version`\"",
   "ruff format .",
   "ruff --fix .",
   "mypy {{ cookiecutter.package_name }}/",
 ]
 lint-check = [
+  "echo \"VERSION: `ruff --version`\"",
   "ruff format --check .",
   "ruff .",
   "mypy {{ cookiecutter.package_name }}/",
 ]
-docs-serve = "mkdocs serve"
-docs-build = "mkdocs build"
 
-# Testing env endencies
-[tool.hatch.envs.test]
+# Docs env dendencies
+[tool.hatch.envs.docs]
 dependencies = [
-  "pytest",
-  "pytest-cov",
+{% if cookiecutter.mkdocs == "Y" -%}
+  "mkdocs",
+  "mkdocs-material",
+  "mkdocstrings[python]",
+  "linkchecker",
+{%- endif %}
 ]
 
 
+[tool.hatch.envs.docs.scripts]
+docs-serve = "mkdocs serve"
+docs-build = "mkdocs build --clean --strict"
+# --ignore-url=None since the SUMMARY.md file leaves a <toc>None</toc> in sitemap.xml
+validate = "linkchecker --config .linkcheckerrc --ignore-url=/reference --ignore-url=None site"
+# https://github.com/linkchecker/linkchecker/issues/678
+build-check = [
+    "docs-build",
+    "validate",
+]
+
+# Testing env dendencies
+[tool.hatch.envs.test]
+dependencies = [
+  "pytest",
+{% if cookiecutter.codecov == "Y" -%}
+  "pytest-cov",
+{% endif -%}
+{% if cookiecutter.asyncio == "Y" -%}
+  "pytest-asyncio",
+  {%- endif %}
+]
+
+
+[tool.hatch.envs.test.scripts]
+test = "pytest"
+test-cov-xml = "pytest --cov-report=xml"
+
+
+# Replace tox & nox
 [[tool.hatch.envs.test.matrix]]
 python = ["{{ cookiecutter.python_version }}"]
 
+#########
+# Build #
+#########
+
 [build-system]
-requires = ["hatchling", "hatch-regex-commit"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "/.github",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["{{ cookiecutter.package_name }}/"]

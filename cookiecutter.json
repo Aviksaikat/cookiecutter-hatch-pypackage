@@ -10,7 +10,7 @@
     "repository_url": "https://github.com/{{cookiecutter.repository_name}}",
     "docs_url": "https://{{cookiecutter.github_username}}.github.io/{{cookiecutter.dist_name}}/",
     "open_source_license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"],
-    "python_version": "3.9",
+    "python_version": ["3.8", "3.9", "3.10", "3.11", "3.12"],
     "asyncio": ["Y", "N"],
     "pydantic": ["Y", "N"],
     "codecov": ["Y","N"],
@@ -18,5 +18,20 @@
     "mkdocs": ["Y", "N"],
     "docs_icon": "material/library",
     "docs_color_primary": ["red", "pink", "purple", "deep purple", "indigo", "blue", "light blue", "cyan", "teal", "green", "light green", "lime", "yellow", "amber", "orange", "deep orange", "brown", "grey", "blue grey", "black", "white"],
-    "docs_color_accent": ["red","pink","purple","deep purple","indigo","blue","light blue","cyan","teal","green","light green","lime","yellow","amber","orange","deep orange"]
+    "docs_color_accent": ["red","pink","purple","deep purple","indigo","blue","light blue","cyan","teal","green","light green","lime","yellow","amber","orange","deep orange"],
+    "lock_file_support": false,
+    "__prompts__": {
+        "full_name": "Provide your [bold yellow]full name[/]",
+        "email": "Provide your [bold yellow]email[/]",
+        "python_version": "Provide the [bold yellow]minimum Python version[/]",
+        "project_name": "Provide the [bold yellow]human-readible project name[/]",
+        "dist_name": "Provide the [bold yellow]project slug[/] (only ASCII letters/digits, underscores, hyphens, and periods)",
+        "package_name": "Provide the [bold yellow]package name[/] (only ASCII letters/digits, and underscores)",
+        "project_short_description": "Provide a [bold yellow]short project description[/]",
+        "project_repo": "Optionally, provide the [bold yellow]repository url[/]",
+        "open_source_license": "Provide the [bold yellow]license[/] of this project",
+        "pypi_username": "Optionally, provide a [bold yellow]PyPI user name[/]",
+        "github_username": "Optionally, provide a [bold yellow]Github user name[/]",
+        "lock_file_support": "[bold red]Experimental:[/] Activate support for lock files?"
+    }
 }
