@@ -151,7 +151,7 @@ asyncio_mode = "strict"
 
 [tool.coverage.run]
 branch = true
-source = ["src/{{ cookiecutter.pkg_name }}"]
+source = ["src/{{ cookiecutter.package_name }}"]
 omit = [
     "_version.py",  # automatically created by hatch-vcs, not in repo
 ]
