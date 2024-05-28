@@ -6,8 +6,12 @@ authors = [
 description = "{{ cookiecutter.project_short_description }}"
 readme = "README.md"
 dynamic = ["version"]
+license = { file = "LICENSE" }
 classifiers = [
-    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: {{ cookiecutter.python_version }}",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
 ]
 requires-python = ">={{ cookiecutter.python_version }}"
 dependencies = [
@@ -17,9 +21,21 @@ dependencies = [
 Documentation = "{{ cookiecutter.docs_url }}"
 Source = "{{ cookiecutter.repository_url }}"
 
+[tool.hatch]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.version]
+source = "regex_commit"
+commit_extra_args = ["-e"]
+# Change this if the version is in a different place
+path = "{{ cookiecutter.package_name }}/__init__.py"
+
 
 [tool.mypy]
 files = ["{{cookiecutter.package_name}}"]
+exclude = ["build/", "dist/", "docs/", "tests/*"]
 disallow_untyped_defs = "True"
 disallow_any_unimported = "True"
 no_implicit_optional = "True"
@@ -27,6 +43,9 @@ check_untyped_defs = "True"
 warn_return_any = "True"
 warn_unused_ignores = "True"
 show_error_codes = "True"
+{% if cookiecutter.pydantic == "Y" -%}
+  plugins = ["pydantic.mypy"]
+{%- endif %}
 
 
 [tool.ruff]
@@ -84,35 +103,30 @@ addopts = "--cov={{ cookiecutter.package_name }}/ --cov-report=term-missing"
 {%- endif %}
 
 
-[tool.pdm.dev-dependencies]
-test = [
-  "pytest>=8.2.0",
+[tool.hatch.envs.default]
+dependencies = [
+  "pytest",
   {% if cookiecutter.codecov == "Y" -%}
-    "pytest-cov>=5.0.0"
+    "pytest-cov"
   {% endif -%}
   {% if cookiecutter.asyncio == "Y" -%}
     "pytest-asyncio",
     {%- endif %}
-  ]
-dev = [
-{% if cookiecutter.deptry == "Y" -%}
-  "deptry>=0.16.1",
-{% endif -%}
-  "mypy>=1.10.0",
-  "ruff>=0.4.3",
-  "pre-commit>=3.7.0",
-  "tox>=4.15.0"
+  {% if cookiecutter.deptry == "Y" -%}
+    "deptry",
+  {% endif -%}
+    "mypy",
+    "ruff",
+    "pre-commit",
+    "tox"
+  {% if cookiecutter.mkdocs == "Y" -%}
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocstrings[python]"
+  {%- endif %}
 ]
-{% if cookiecutter.mkdocs == "Y" -%}
-docs = [
-  "mkdocs>=1.6.0",
-  "mkdocs-material>=9.5.21",
-  "mkdocstrings[python]>=0.25.1"
-]
-{%- endif %}
 
-
-[tool.pdm.scripts]
+[tool.hatch.envs.default.scripts]
 test = "pytest"
 test-cov-xml = "pytest --cov-report=xml"
 lint = [
@@ -128,11 +142,21 @@ lint-check = [
 docs-serve = "mkdocs serve"
 docs-build = "mkdocs build"
 
-[tool.pdm.build]
-# excludes = ["./**/.git"]
-# package-dir = "."
-includes = ["{{cookiecutter.package_name}}"]
+# Testing env endencies
+[tool.hatch.envs.test]
+dependencies = [
+  "pytest",
+  "pytest-cov",
+]
+
+
+[[tool.hatch.envs.test.matrix]]
+python = ["{{ cookiecutter.python_version }}"]
 
 [build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
+requires = ["hatchling", "hatch-regex-commit"]
+build-backend = "hatchling.build"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["{{ cookiecutter.package_name }}/"]
