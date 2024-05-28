@@ -1,11 +1,19 @@
+# Project information
 site_name: {{ cookiecutter.project_name }}
 site_description: {{ cookiecutter.project_short_description }}
+site_author: {{ cookiecutter.full_name }}
+site_url: {{ cookiecutter.project_repo }}
+copyright: 'Copyright &copy; {{ cookiecutter.full_name }} {% now 'local', '%Y' %}-present'
 
+# Repository
 repo_url: {{ cookiecutter.repository_url }}
 repo_name: {{ cookiecutter.repository_name }}
 
 theme:
     name: material
+    font:
+        text: Roboto
+        code: Roboto Mono
     icon:
         logo: {{ cookiecutter.docs_icon }}
     palette:
@@ -53,12 +61,21 @@ plugins:
                     - https://docs.python.org/{{ cookiecutter.python_version }}/objects.inv
                 options:
                     docstring_style: google
+    - gen-files:
+        scripts:
+            - docs/scripts/gen_ref_nav.py
 
 watch:
     - docs
     - {{ cookiecutter.package_name }}
 
+# Navigation
 nav:
-    - About: index.md
+    - Home:
+        - About: index.md
+        - Changelog: changelog.md
+        - License: license.md
+        - Authors: authors.md
+        - Contributing: contributing.md
     - Reference:
         - {{ cookiecutter.package_name }}: reference/{{ cookiecutter.package_name }}.md
