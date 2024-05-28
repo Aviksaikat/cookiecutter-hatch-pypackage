@@ -14,12 +14,12 @@ Cookiecutter template for a cutting-edge Python package: Hatch, ruff, mypy, GitH
 
 * [X] Lightweight starter
 * [X] [`Hatch`](https://hatch.pypa.io/latest/install/) package management
-* [hatch-vcs]: determine the package version automatically from git tags, e.g. `v0.9`
+* [X] [hatch-vcs]: determine the package version automatically from git tags, e.g. `v0.9`
 * [X] Linting and formatting with [`ruff`](https://github.com/charliermarsh/ruff) which replaces [isort], [flake8], [black], etc.
 * [X] Type checking with [`mypy`](https://github.com/python/mypy)
 * [X] Check unused, missing and transitive dependencies with [`deptry`](https://deptry.com/)
 * [X] Unit tests with [`pytest`](https://github.com/pytest-dev/pytest) with optional asyncio setup.
-* [X] Automate and standardize testing with [`tox`](https://tox.wiki/en/4.15.0/)
+* [X] Automate and standardize testing with [Hatch-env-matrices]
 * [X] Documentation with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and docstring reference support with [mkdocstrings](https://mkdocstrings.github.io/).
 * [X] Ready-to-use [GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions) pipelines
 * [X] [hatch-pip-compile]: *experimental* support for lock-files,
@@ -68,6 +68,7 @@ This project is licensed under the terms of the [MIT](https://github.com/Aviksai
 
 [cookiecutter]: https://cookiecutter.readthedocs.io/
 [hatch-vcs]: https://github.com/ofek/hatch-vcs
+[Hatch-env-matrices]: https://hatch.pypa.io/dev/config/environment/advanced/#matrix
 [hatch-pip-compile]: https://github.com/juftin/hatch-pip-compile
 [cookiecutter-pypackage]: https://github.com/audreyfeldroy/cookiecutter-pypackage
 [pre-commit]: https://pre-commit.com/

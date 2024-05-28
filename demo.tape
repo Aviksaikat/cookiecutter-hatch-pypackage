@@ -1,7 +1,7 @@
 # This is the tape file to generate the demo for this project. Generated using VHS.
 
 Output "media/demo.gif"
-Set Shell fish
+Set Shell zsh
 Set FontSize 19
 Set Width 1280
 Set Height 720
@@ -11,9 +11,9 @@ Set WindowBar Colorful
 Set Framerate 60
 
 # --
-Type "cookiecutter https://github.com/Aviksaikat/cookiecutter-pdm-pypackage"
+Type "cookiecutter https://github.com/Aviksaikat/cookiecutter-hatch-pypackage"
 Enter 1
-Sleep 3s
+Sleep 5s
 Type "Saikat k"
 Enter 2
 Sleep 500ms
@@ -55,7 +55,9 @@ Type "2"
 Enter
 Type "12"
 Enter
-Sleep 36s
+Type "y"
+Enter
+Sleep 10s
 Type "ls demo-project/"
 Enter
 Sleep 4.5s
