@@ -2,7 +2,7 @@
 site_name: {{ cookiecutter.project_name }}
 site_description: {{ cookiecutter.project_short_description }}
 site_author: {{ cookiecutter.full_name }}
-site_url: {{ cookiecutter.project_repo }}
+site_url: {{ cookiecutter.repository_url }}
 copyright: 'Copyright &copy; {{ cookiecutter.full_name }} {% now 'local', '%Y' %}-present'
 
 # Repository
