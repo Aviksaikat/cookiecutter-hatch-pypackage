@@ -100,7 +100,7 @@ This project is licensed under the terms of the [MIT](https://github.com/Aviksai
 [ruff-link]: https://github.com/charliermarsh/ruff
 [mypy-image]: https://img.shields.io/badge/Types-mypy-blue.svg
 [mypy-link]: https://mypy-lang.org/
-[pytest-image]: https://img.shields.io/badge/Tests-pytest-green.svg
+[pytest-image]: https://img.shields.io/badge/Pytest-0A9EDC.svg?style=flat&logo=Pytest&logoColor=white
 [pytest-link]:  https://docs.pytest.org/
 [mkdocs-image]: https://img.shields.io/badge/Docs-mkdocs-blue.svg
 [mkdocs-link]: https://www.mkdocs.org/
