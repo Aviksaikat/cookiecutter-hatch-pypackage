@@ -1,6 +1,6 @@
 # Cookiecutter Hatch PyPackage
 
-Cookiecutter template for a cutting-edge Python package: Hatch, ruff, mypy, GitHub Actions and more!
+Cookiecutter template for a cutting-edge Python package: `Hatch`, `ruff`, `mypy`, `GitHub Actions` and more!
 
 
 |         |                                    |
@@ -21,7 +21,7 @@ Cookiecutter template for a cutting-edge Python package: Hatch, ruff, mypy, GitH
 * [X] Unit tests with [`pytest`](https://github.com/pytest-dev/pytest) with optional asyncio setup.
 * [X] Automate and standardize testing with [Hatch-env-matrices]
 * [X] Documentation with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and docstring reference support with [mkdocstrings](https://mkdocstrings.github.io/).
-* [X] Ready-to-use [GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions) pipelines
+* [X] Ready-to-use [GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions) pipelines with `dependabot`, `release-drafter`, `labeler` & more.
 * [X] [hatch-pip-compile]: *experimental* support for lock-files,
 * [X] [pyproject.toml]: all package, build and tool configuration in one file,
 * [X] [coverage]: tool for measuring code coverage of Python programs with pytest integration,
@@ -38,7 +38,7 @@ Generate the project:
 cookiecutter https://github.com/Aviksaikat/cookiecutter-hatch-pypackage
 ```
 
-The generator will automatically call `pdm install` at the end.
+The generator will automatically call `hatch env create & git init` at the end.
 
 Then, for the `GitHub Actions pipelines` to work correctly, you should:
 

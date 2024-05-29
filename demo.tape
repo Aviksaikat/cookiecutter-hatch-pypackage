@@ -13,52 +13,65 @@ Set Framerate 60
 # --
 Type "cookiecutter https://github.com/Aviksaikat/cookiecutter-hatch-pypackage"
 Enter 1
-Sleep 5s
-Type "Saikat k"
-Enter 2
-Sleep 500ms
+Sleep 3s
+Type "Sa"
+Type "ikat K"
+Enter
+Sleep 1s
+Enter
 Type "aviksaikat"
 Enter
-Sleep 1.5s
-Type "Demo "
-Sleep 500ms
-Type "project"
+Sleep 1s
+Type "Demo project"
 Enter
 Sleep 1s
 Enter
-Sleep 1s
 Enter
+Sleep 1s
 Type "This is a demo project"
-Backspace
-Enter 2
-Sleep 500ms
-Enter 2
-Sleep 500ms
-Type "2"
-Backspace
-Type "1"
 Enter
 Sleep 500ms
 Enter
 Sleep 500ms
+Enter
+Sleep 500ms
+Enter
+Sleep 1s
 Type "2"
 Enter
+Sleep 1s
+Type "2"
+Enter
+Sleep 1s
+Type "n"
+Enter
+Sleep 1.5s
+Type "2"
+Enter
+Sleep 1s
 Type "1"
 Enter
+Sleep 1s
 Type "1"
 Enter
+Sleep 1s
+Type "2"
+Enter
+Sleep 1s
 Type "1"
 Enter
 Sleep 500ms
-Enter
-Type "2"
 Enter
 Type "12"
 Enter
+Sleep 1s
+Type "3"
+Enter
+Sleep 1s
 Type "y"
 Enter
 Sleep 10s
 Type "ls demo-project/"
 Enter
-Sleep 4.5s
+Sleep 10s
 Ctrl+D
