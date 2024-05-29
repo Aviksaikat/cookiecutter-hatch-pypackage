@@ -105,7 +105,7 @@ This project is licensed under the terms of the [MIT](https://github.com/Aviksai
 [pytest-link]:  https://docs.pytest.org/
 [mkdocs-image]: https://img.shields.io/badge/Docs-mkdocs-blue.svg
 [mkdocs-link]: https://www.mkdocs.org/
-[precommit-image]: https://img.shields.io/badge/Linting-pre--commit-red.svg
+[precommit-image]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
 [precommit-link]:  https://pre-commit.com/
 [MIT-image]: https://img.shields.io/badge/License-MIT-9400d3.svg
 [MIT-link]: LICENSE
