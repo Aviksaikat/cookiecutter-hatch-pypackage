@@ -6,7 +6,7 @@ Cookiecutter template for a cutting-edge Python package: `Hatch`, `ruff`, `mypy`
 |         |                                    |
 |---------|------------------------------------|
 | Details | [![License - MIT][MIT-image]][MIT-link] [![GitHub Sponsors][sponsor-image]][sponsor-link] |
-| Features | [![Hatch project][hatch-image]][hatch-link] [![linting - Ruff][ruff-image]][ruff-link] [![types - mypy][mypy-image]][mypy-link] [![test - pytest][pytest-image]][pytest-link]  [![linting - precommit][precommit-image]][precommit-link] [![docs - mkdocs][mkdocs-image]][mkdocs-link] |
+| Features | [![Hatch project][hatch-image]][hatch-link] [![linting - Ruff][ruff-image]][ruff-link] [![types - mypy][mypy-image]][mypy-link] [![test - pytest][pytest-image]][pytest-link] [![Github Actions][github-actions]][precommit-link]  [![linting - precommit][precommit-image]][precommit-link] [![docs - mkdocs][mkdocs-image]][mkdocs-link] |
 
 
 
@@ -68,6 +68,7 @@ This project is licensed under the terms of the [MIT](https://github.com/Aviksai
 
 [cookiecutter]: https://cookiecutter.readthedocs.io/
 [hatch-vcs]: https://github.com/ofek/hatch-vcs
+[github-actions]: https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=flat&logo=GitHub-Actions&logoColor=white
 [Hatch-env-matrices]: https://hatch.pypa.io/dev/config/environment/advanced/#matrix
 [hatch-pip-compile]: https://github.com/juftin/hatch-pip-compile
 [cookiecutter-pypackage]: https://github.com/audreyfeldroy/cookiecutter-pypackage
