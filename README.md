@@ -21,7 +21,7 @@ Cookiecutter template for a cutting-edge Python package: `Hatch`, `ruff`, `mypy`
 * [X] Unit tests with [`pytest`](https://github.com/pytest-dev/pytest) with optional asyncio setup.
 * [X] Automate and standardize testing with [Hatch-env-matrices]
 * [X] Documentation with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and docstring reference support with [mkdocstrings](https://mkdocstrings.github.io/).
-* [X] Ready-to-use [GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions) pipelines with `dependabot`, `release-drafter`, `labeler` & more.
+* [X] Ready-to-use [GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions) pipelines with `dependabot`, `release-drafter`, `labeler`, `publish to PYPI workflows`, `publish to test PYPI workflows` & more.
 * [X] [hatch-pip-compile]: *experimental* support for lock-files,
 * [X] [pyproject.toml]: all package, build and tool configuration in one file,
 * [X] [coverage]: tool for measuring code coverage of Python programs with pytest integration,
