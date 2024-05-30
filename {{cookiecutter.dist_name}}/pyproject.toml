@@ -69,6 +69,7 @@ include = [
   "tests/**/*.py",
   "tests/**/*.pyi"
 ]
+exclude = ["tests", "src/{{ cookiecutter.package_name }}/_version.py"]
 
 [tool.ruff.lint]
 preview = true # preview features & checks, use with caution

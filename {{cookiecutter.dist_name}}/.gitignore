@@ -112,4 +112,6 @@ ENV/
 .pdm-python
 
 # ruff
-.ruff_cache/*
+.ruff_cache/
+# ignore the _version.py file generated from hatch-vcs
+_version.py
