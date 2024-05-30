@@ -201,6 +201,7 @@ upgrade-pkg = "PIP_COMPILE_UPGRADE='{args}' hatch env run --env {env_name} -- py
 # Lint env dendencies
 [tool.hatch.envs.lint]
 dependencies = [
+  "pydantic",
   "mypy",
   "ruff",
 {% if cookiecutter.deptry == "Y" -%}
