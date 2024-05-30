@@ -34,6 +34,8 @@ Cookiecutter template for a cutting-edge Python package: `Hatch`, `ruff`, `mypy`
 
 Generate the project:
 
+This project will use [`pipx`](https://github.com/pypa/pipx) to install `hatch` in an isolated enviroment. Make sure you have `pipx` installed before running the following command.
+
 ```bash
 cookiecutter https://github.com/Aviksaikat/cookiecutter-hatch-pypackage
 ```
