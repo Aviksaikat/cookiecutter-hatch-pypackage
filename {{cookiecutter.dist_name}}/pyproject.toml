@@ -180,7 +180,6 @@ requires = ["hatch-pip-compile~=1.11"]
 dependencies = [
   {% if cookiecutter.pydantic == "Y" -%}
   "pydantic",
-  "pre-commit",
   {%- endif %}
 ]
 post-install-commands = ["pre-commit install"]
