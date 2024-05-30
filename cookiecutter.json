@@ -21,17 +21,17 @@
     "docs_color_accent": ["red","pink","purple","deep purple","indigo","blue","light blue","cyan","teal","green","light green","lime","yellow","amber","orange","deep orange"],
     "lock_file_support": false,
     "__prompts__": {
-        "full_name": "Provide your [bold yellow]full name[/]",
-        "email": "Provide your [bold yellow]email[/]",
-        "python_version": "Provide the [bold yellow]minimum Python version[/]",
-        "project_name": "Provide the [bold yellow]human-readible project name[/]",
-        "dist_name": "Provide the [bold yellow]project slug[/] (only ASCII letters/digits, underscores, hyphens, and periods)",
-        "package_name": "Provide the [bold yellow]package name[/] (only ASCII letters/digits, and underscores)",
-        "project_short_description": "Provide a [bold yellow]short project description[/]",
-        "project_repo": "Optionally, provide the [bold yellow]repository url[/]",
-        "open_source_license": "Provide the [bold yellow]license[/] of this project",
-        "pypi_username": "Optionally, provide a [bold yellow]PyPI user name[/]",
-        "github_username": "Optionally, provide a [bold yellow]Github user name[/]",
+        "full_name": "Provide your [bold plum2]full name[/]",
+        "email": "Provide your [bold plum2]email[/]",
+        "python_version": "Provide the [bold plum2]minimum Python version[/]",
+        "project_name": "Provide the [bold plum2]human-readible project name[/]",
+        "dist_name": "Provide the [bold plum2]project slug[/] (only ASCII letters/digits, underscores, hyphens, and periods)",
+        "package_name": "Provide the [bold plum2]package name[/] (only ASCII letters/digits, and underscores)",
+        "project_short_description": "Provide a [bold plum2]short project description[/]",
+        "project_repo": "Optionally, provide the [bold plum2]repository url[/]",
+        "open_source_license": "Provide the [bold plum2]license[/] of this project",
+        "pypi_username": "Optionally, provide a [bold plum2]PyPI user name[/]",
+        "github_username": "Optionally, provide a [bold plum2]Github user name[/]",
         "lock_file_support": "[bold red]Experimental:[/] Activate support for lock files?"
     }
 }
