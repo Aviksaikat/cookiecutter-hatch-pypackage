@@ -216,13 +216,13 @@ typing = [
 lint = [
   "echo \"VERSION: `ruff --version`\"",
   "ruff format .",
-  "ruff --fix .",
+  "ruff check . --fix",
   "mypy src/{{ cookiecutter.package_name }}/",
 ]
 lint-check = [
   "echo \"VERSION: `ruff --version`\"",
   "ruff format --check .",
-  "ruff .",
+  "ruff check .",
   "mypy src/{{ cookiecutter.package_name }}/",
 ]
 
