@@ -121,17 +121,8 @@ ignore = [
 ]
 
 
-[tool.ruff.format]
-# be more like black
-quote-style = "single"
-
-
 [tool.ruff.lint.isort]
 known-first-party = ["{{ cookiecutter.package_name }}"]
-
-
-[tool.ruff.lint.flake8-quotes]
-inline-quotes = "single"
 
 
 [tool.ruff.lint.flake8-tidy-imports]
@@ -289,3 +280,4 @@ exclude = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/{{ cookiecutter.package_name }}/"]
+
