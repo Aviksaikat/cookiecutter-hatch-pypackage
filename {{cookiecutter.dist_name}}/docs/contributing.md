@@ -1,5 +1,1 @@
-{% raw %}
-{%
-   include-markdown "../CONTRIBUTING.md"
-%}
-{% endraw %}
+--8<-- "CONTRIBUTING.md"

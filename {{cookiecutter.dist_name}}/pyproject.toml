@@ -32,12 +32,13 @@ allow-direct-references = true
 ##############
 
 [tool.hatch.version]
-source = "vcs"
-raw-options = { version_scheme = "no-guess-dev" }
+source = "regex_commit"
+commit_extra_args = ["-e"]
+path = "src/mantaray_py/__version__.py"
 
 
-[tool.hatch.build.hooks.vcs]
-version-file = "src/{{ cookiecutter.package_name }}/_version.py"
+# [tool.hatch.build.hooks.vcs]
+# version-file = "src/{{ cookiecutter.package_name }}/_version.py"
 
 
 ##################
@@ -174,6 +175,7 @@ dependencies = [
   "pydantic",
   {%- endif %}
 ]
+installer = "uv" # or "pip"
 post-install-commands = ["pre-commit install"]
 {%- if cookiecutter.lock_file_support %}
 type = "pip-compile"
@@ -270,7 +272,7 @@ python = ["{{ cookiecutter.python_version }}"]
 #########
 
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatchling", "hatch-regex-commit"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.sdist]
