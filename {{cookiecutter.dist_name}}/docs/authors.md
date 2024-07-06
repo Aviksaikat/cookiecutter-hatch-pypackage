@@ -1,5 +1,1 @@
-{% raw %}
-{%
-   include-markdown "../AUTHORS.md"
-%}
-{% endraw %}
+--8<-- "AUTHORS.md"

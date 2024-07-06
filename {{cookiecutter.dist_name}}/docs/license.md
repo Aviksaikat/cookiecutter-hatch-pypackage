@@ -1,5 +1,1 @@
-{% raw %}
-{%
-   include-markdown "../LICENSE"
-%}
-{% endraw %}
+--8<-- "LICENSE"
