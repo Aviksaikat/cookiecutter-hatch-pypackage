@@ -34,7 +34,7 @@ allow-direct-references = true
 [tool.hatch.version]
 source = "regex_commit"
 commit_extra_args = ["-e"]
-path = "src/mantaray_py/__version__.py"
+path = "src/{{cookiecutter.package_name}}/__version__.py"
 
 
 # [tool.hatch.build.hooks.vcs]
